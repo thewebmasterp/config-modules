@@ -1,0 +1,4 @@
+module-first: false
+config-modules-dir: /home/master/.config-modules
+verbosity-index: 0
+without-preview: false

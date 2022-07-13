@@ -1,0 +1,167 @@
+* config-modules
+Is turning static config files into dynamic in a modular approach.
+
+What I mean by that?
+
+Take a static i3wm config file. You open it, change a bunch of variables, save it, reload your config and this has changed your color theme. What if you could simply predefine little files, each containing the same variables holding different colors and then easily switch between those few little files, concatenated to your i3wm config? This is where config-modules comes into play!
+
+It gives you the tool to create something like this:
+[[./demonstration.gif]]
+
+
+
+* The problem config-modules solves
+As we know, Unix and Unix-like operating systems utilities rely highly on configuration files as a mean for the user to set them up through parameters. A typical example would be the i3 window manager (i3wm) config file, which I will use to explain what config-modules does (you don't need to understand any of that).
+#+BEGIN_SRC
+   # Color scheme
+   set $color-focused-dark  #285577
+   set $color-focused-light #2E9EF4
+   set $color-black         #0C0C0C
+   set $color-black-light   #292D2E
+   set $color-black-lighter #5F676A
+   set $color-white         #FFFFFF
+   set $color-urgent        #900000
+
+   # Set the modifier
+   set $mod Mod4
+
+   # Open a new terminal window
+   bindsym $mod+Return exec --no-startup-id alacritty
+
+   # Restart i3 inplace
+   bindsym $mod+Shift+r restart
+
+   # class                 border              bground              text                 indicator            child_border
+   client.focused          $color-focused-dark $color-focused-dark  $color-white         $color-focused-light $color-focused-dark
+   client.focused_inactive $color-black-light  $color-black-lighter $color-white         $color-black-lighter $color-black-lighter
+   client.unfocused        $color-black-light  $color-black-light   $color-black-lighter $color-black-light   $color-black-light
+   client.urgent           $color-black-light  $color-urgent        $color-white         $color-urgent        $color-urgent
+   client.placeholder      $color-black        $color-black         $color-white         $color-black         $color-black
+   client.background       $color-black-light
+
+   bar {
+     id bar-1
+     output primary
+     output HDMI2
+     tray_output primary
+     status_command i3-status -c ~/.config/i3-status/config.yml
+     position top
+     font pango: JetBrainsMono 11
+     separator_symbol " | "
+     colors {
+       background $color-black
+       statusline $color-white
+       separator  $color-black-lighter
+
+       focused_workspace  $color-focused-light $color-focused-dark $color-white
+       active_workspace   $color-black-light   $color-black        $color-white
+       inactive_workspace $color-black-light   $color-black        $color-black-lighter
+       urgent_workspace   $color-black-light   $color-urgent       $color-white
+       binding_mode       $color-black-light   $color-urgent       $color-white
+     }
+  }
+#+END_SRC
+On the first few lines, we can see this block that initializes some variables holding colors as values (the color scheme):
+#+BEGIN_SRC
+   set $color-focused-dark  #285577
+   set $color-focused-light #2E9EF4
+   set $color-black         #0C0C0C
+   set $color-black-light   #292D2E
+   set $color-black-lighter #5F676A
+   set $color-white         #FFFFFF
+   set $color-urgent        #900000
+#+END_SRC
+Then later, as you can see above, those variables are used in multiple places within the config file, thus allowing us to specify static values once and use them multiple times later.
+
+ Now, what if we wrote multiple versions of this first color scheme block and were able to quickly shift between those versions, thus allowing us to choose a color scheme for i3wm?
+
+ This is where this package comes into play!
+* How it works
+You create a text file (/static/). You create a folder containing multiple text files (/modules/). Later, running this utility will allow you to choose which module to be concatenated to the static file (to the top/to the bottom of the static file) and it will export the resulting config to a specified place (by a special config file called /entryconfig/). This whooole thing is called an ~entry~. An entry is simply a program you want to generate a config for (from static & modules).
+
+Here's an example
+
+ Continuing (but not limited only to) the i3wm example above,
+ Let's say your config is located under  ~~/.config/i3/config~.
+ You have to create another folder, for example ~~/.config-modules/entries/i3-wm~ that contains:
+ + A directory called ~modules~
+   In this directory, you simply put the different versions, or "modules" that you want later to be able to shift, each in its text file with a descriptive file name.
+   In our i3wm example, this would be:
+   + ~/.config-modules/entries/i3-wm/modules/Standard
+     #+BEGIN_SRC
+        set $color-focused-dark  #285577
+        set $color-focused-light #2E9EF4
+        set $color-black         #0C0C0C
+        set $color-black-light   #292D2E
+        set $color-black-lighter #5F676A
+        set $color-white         #FFFFFF
+        set $color-urgent        #900000
+     #+END_SRC
+     (The "Standard" color scheme)
+   + ~/.config-modules/entries/i3-wm/modules/Bluescreen
+     #+BEGIN_SRC
+        set $color-focused-dark  #00dbc9
+        set $color-focused-light #1affec
+        set $color-black         #001a18
+        set $color-black-light   #00ad9f
+        set $color-black-lighter #00c2b2
+        set $color-white   		 #e5fffd
+        set $color-urgent        #ff3d3d
+     #+END_SRC
+     (The "Bluescreen" color scheme)
+ + A text file called ~static~
+   In this file, you simply put the static part of your config, the one that doesn't have different modules or versions. Continuing the i3wm example above, this would be:
+   #+BEGIN_SRC
+      # Set the modifier
+      set $mod Mod4
+
+      # Open a new terminal window
+      bindsym $mod+Return exec --no-startup-id alacritty
+
+      # Restart i3 inplace
+      bindsym $mod+Shift+r restart
+
+      # class                 border              bground              text                 indicator            child_border
+      client.focused          $color-focused-dark $color-focused-dark  $color-white         $color-focused-light $color-focused-dark
+      client.focused_inactive $color-black-light  $color-black-lighter $color-white         $color-black-lighter $color-black-lighter
+      client.unfocused        $color-black-light  $color-black-light   $color-black-lighter $color-black-light   $color-black-light
+      client.urgent           $color-black-light  $color-urgent        $color-white         $color-urgent        $color-urgent
+      client.placeholder      $color-black        $color-black         $color-white         $color-black         $color-black
+      client.background       $color-black-light
+
+      bar {
+        id bar-1
+        output primary
+        output HDMI2
+        tray_output primary
+        status_command i3-status -c ~/.config/i3-status/config.yml
+        position top
+        font pango: JetBrainsMono 11
+        separator_symbol " | "
+        colors {
+          background $color-black
+          statusline $color-white
+          separator  $color-black-lighter
+
+          focused_workspace  $color-focused-light $color-focused-dark $color-white
+          active_workspace   $color-black-light   $color-black        $color-white
+          inactive_workspace $color-black-light   $color-black        $color-black-lighter
+          urgent_workspace   $color-black-light   $color-urgent       $color-white
+          binding_mode       $color-black-light   $color-urgent       $color-white
+        }
+     }
+   #+END_SRC
+ + A config file for the current config-modules entry called ~entryconfig.yaml~
+   With the following content:
+   #+BEGIN_SRC
+     # In the resulting config file, should the module come before the static?
+     module-first: true
+
+     # Where the resulting config file should be exported to?
+     export-to: "/home/user/.config/i3/config"
+
+     # What command should I run after the config has been exported?
+     post-apply-hook: "i3-msg restart"
+   #+END_SRC
+ 
+And that was the needed config so far!
