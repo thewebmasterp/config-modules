@@ -28,7 +28,7 @@ will export the resulting concatenated file to a specified place
 that you specified via config-modules-dir slash entries.
 
 A visual example of what I just explained can be seen in
-[./examples/config-modules-dir](./examples/config-modules-dir).
+[./examples/config-modules-dir](./examples).
 
 ### entry vs module
 
@@ -44,13 +44,14 @@ The config usually resides in
 `~/.config/config-modules/config-modules.yaml` and it is used to both
 set up how config-modules behaves as well as to store cache by the
 utility. It is self-explanatory, for info about each option look at
-`./config.yaml`
+[./config.yaml](./config.yaml).
 
 Entryconfig on the other hand is a per-entry config file. You use it to
 configure default entry behavior, the most important of which is where
 the concatenated static + chosen module should be exported to (export-to
-property). Read an example entryconfig from
-`./examples/config-modules-dir`, self-explanatory as well.
+property). An example entryconfig file is
+[./examples/config-modules-dir/entries/i3-wm/entryconfig](./examples/config-modules-dir/entries/i3-wm/entryconfig),
+self-explanatory as well.
 
 ## Installation
 
@@ -60,8 +61,9 @@ $ npm install config-modules
 
 ## Initialize the config-modules-dir
 
-Look at `./examples/config-modules-dir` for the file structure and
-configuration options you can define in *entryconfig*.
+Look at [./examples/config-modules-dir](./examples/config-modules-dir)
+for the file structure and configuration options you can define in
+*entryconfig*.
 
 ## Initial run
 
@@ -76,7 +78,8 @@ It will as well ask you whether you want it to generate a config file at
 `~/.config/config-modules/config-modules.yaml`. This config file is used
 both for storing cache by config-modules and by you, to pass
 configuration parameters. Press Y to confirm. The default
-self-explanatory config file is available at `./config.yaml`
+self-explanatory config file is available at
+[./config.yaml](./config.yaml).
 
 ## Note
 
