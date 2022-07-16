@@ -1,0 +1,27 @@
+colors:
+  name: Bluescreen
+  author: Zdravko Dimov
+  primary:
+    background: "#001a18"
+    foreground: "#00d1c0" 
+  cursor:
+    text: "#001a18"
+    cursor: "#9efff7"
+  normal:
+    black: "#001a18"
+    red: "#00dbc9"
+    green: "#00ad9f"
+    yellow: "#1affec"
+    blue: "#00d6c4"
+    magenta: "#00ad9f"
+    cyan: "#00c2b2"
+    white: "#99fff6"
+  bright:
+    black: "#00ebd7"
+    red: "#3dffef"
+    green: "#00d1c0" 
+    yellow: "#38ffee"
+    blue: "#2effee"
+    magenta: "#00b2a3"
+    cyan: "#9efff7"  
+    white: "#e5fffd"

@@ -1,0 +1,27 @@
+colors:
+  name: Standard
+  author: unknown
+  primary:
+    background: "#292D2E"
+    foreground: "#FFFFFF"
+  cursor:
+    text: "#292D2E"
+    cursor: "#2E9EF4"
+  normal:
+    black: "#0C0C0C"
+    red: "#900000"
+    green: "#3F644F"
+    yellow: "#807640"
+    blue: "#2B4256"
+    magenta: "#73526F"
+    cyan: "#5D8585"
+    white: "#5F676A"
+  bright:
+    black: "#292D2E"
+    red: "#FE4A49"
+    green: "#3E885B"
+    yellow: "#B5A036"
+    blue: "#285577"
+    magenta: "#985890"
+    cyan: "#69AAA7"
+    white: "#FFFFFF"

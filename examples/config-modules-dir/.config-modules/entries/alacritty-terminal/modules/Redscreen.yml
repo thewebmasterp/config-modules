@@ -1,0 +1,27 @@
+colors:
+  name: Redscreen
+  author: Zdravko Dimov
+  primary:
+    background: "#1a0000"
+    foreground: "#d10000"
+  cursor:
+    text: "#1a0000"
+    cursor: "#ff9e9e"
+  normal:
+    black: "#1a0000"
+    red: "#db0000"
+    green: "#ad0000"
+    yellow: "#ff1a1a"
+    blue: "#d60000"
+    magenta: "#ad0000"
+    cyan: "#c20000"
+    white: "#ff9999"
+  bright:
+    black: "#eb0000"
+    red: "#ff3d3d"
+    green: "#d10000"
+    yellow: "#ff3838"
+    blue: "#ff2e2e"
+    magenta: "#b20000"
+    cyan: "#ff9e9e"
+    white: "#ffe5e5"

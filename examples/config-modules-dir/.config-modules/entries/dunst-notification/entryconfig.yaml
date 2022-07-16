@@ -1,0 +1,8 @@
+# File where the resulting static + chosen module will be exported to
+export-to: "/home/master/.config/dunst/dunstrc"
+
+# If set to true, the module will come before the static
+# module-first: false
+
+# An update command to run upon export
+post-apply-hook: "killall dunst; dunst -config ~/.config/dunst/dunstrc &"

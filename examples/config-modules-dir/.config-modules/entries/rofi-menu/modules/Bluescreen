@@ -1,0 +1,10 @@
+* {
+  COLOR-FOCUSED-DARK:  #00dbc9;
+  COLOR-FOCUSED-LIGHT: #1affec;
+  COLOR-BLACK:         #001a18;  
+  COLOR-BLACK-LIGHT:   #00ad9f;
+  COLOR-BLACK-LIGHTER: #00c2b2;
+  COLOR-WHITE:		   #e5fffd;
+  COLOR-URGENT:		   #ff3d3d;  
+  COLOR-BACKGROUND:    #00ad9f70;
+}
