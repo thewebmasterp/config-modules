@@ -6,11 +6,13 @@ What I mean by that?
 
 Take a static i3wm config file. You open it, change a bunch of
 variables, save it, reload your config and this has changed your color
-theme. What if you could simply predefine little files (called modules),
-each containing the same variables holding different colors and then
-easily switch between those modules, concatenated to your i3wm config?
-Or even turn whole parts of your config into individual modules that you
-can apply by choice. This is where config-modules comes into play!
+theme.🥱
+
+What if you could simply predefine little files (called modules), each
+containing the same variables holding different colors and then easily
+switch between those modules, concatenated to your i3wm config? Or even
+turn whole parts of your config into individual modules that you can
+apply by choice. This is where config-modules comes into play!😃
 
 Here's what I used it for: ![](./demonstration.gif)
 
@@ -54,6 +56,9 @@ property). An example entryconfig file is
 self-explanatory as well.
 
 ## Installation
+
+You can install the package via
+[npm](https://www.npmjs.com/package/config-modules):
 
 ``` shell
 $ npm install config-modules

@@ -3,7 +3,9 @@ Is turning static config files into dynamic in a modular approach.
 
 What I mean by that?
 
-Take a static i3wm config file. You open it, change a bunch of variables, save it, reload your config and this has changed your color theme. What if you could simply predefine little files (called modules), each containing the same variables holding different colors and then easily switch between those modules, concatenated to your i3wm config? Or even turn whole parts of your config into individual modules that you can apply by choice. This is where config-modules comes into play!
+Take a static i3wm config file. You open it, change a bunch of variables, save it, reload your config and this has changed your color theme.🥱
+
+What if you could simply predefine little files (called modules), each containing the same variables holding different colors and then easily switch between those modules, concatenated to your i3wm config? Or even turn whole parts of your config into individual modules that you can apply by choice. This is where config-modules comes into play!😃
 
 Here's what I used it for:
 [[./demonstration.gif]]
@@ -22,6 +24,7 @@ Entryconfig on the other hand is a per-entry config file. You use it to configur
 
 
 ** Installation
+You can install the package via [[https://www.npmjs.com/package/config-modules][npm]]:
 #+BEGIN_SRC shell
 $ npm install config-modules
 #+END_SRC
