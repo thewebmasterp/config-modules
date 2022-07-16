@@ -1,0 +1,3 @@
+export-to: "/home/master/.config/i3/config"
+module-first: true
+post-apply-hook: "i3-msg restart"

@@ -1,4 +1,14 @@
+# This is the config-modules configuration file
+#
+# Properties that are specified (if it is possible to be specified) in entryconfig
+# have higher precedence than the ones defined here.
+#
+
+# If set to true, the module will come before the static
 module-first: false
+
+# The path to the folder containing the entries with their modules
 config-modules-dir: /home/master/.config-modules
-verbosity-index: 0
+
+# When selecting a module interactively, this option disables the preview.
 without-preview: false

@@ -1,0 +1,2 @@
+export-to: "/home/master/.config/alacritty/alacritty.yml"
+module-first: true

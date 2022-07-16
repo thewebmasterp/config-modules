@@ -1,0 +1,2 @@
+export-to: "/home/master/.config/rofi/config.rasi"
+module-first: true

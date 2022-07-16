@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Turning static config files into dynamic in a modular approach",
   "main": "index.js",
-  "bin": "index.js",
+  "bin": {
+		"config-modules": "index.js"
+	},
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

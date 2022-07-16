@@ -1,0 +1,3 @@
+export-to: "/home/master/.config/xsettingsd/xsettingsd.conf"
+module-first: false
+post-apply-hook: "updategtk"

@@ -1,0 +1,3 @@
+export-to: "/home/master/.config/dunst/dunstrc"
+module-first: false
+post-apply-hook: "killall dunst; dunst -config ~/.config/dunst/dunstrc &"

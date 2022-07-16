@@ -23,6 +23,8 @@
 
 //TODO -> Exiting module setting should put you back at choosing an entry, rather than exiting the program.
 
+//TODO -> What if there's only one entry? Are you still going to ask the user to choose an entry?
+
 import fs from 'fs'
 import path from 'path'
 import url from 'url'
@@ -239,16 +241,24 @@ const argv = yargs(hideBin(process.argv))
   .options(filteredOptionsProps)
   .example([
     [
-      '$0 --entry i3_wm --module material.config',
-      'change i3_wm module to material.config',
+      '$0',
+      'Simply let me choose and entry and a module I want to be applied to the entry.',
     ],
     [
-      '$0 --entry i3_wm',
-      'Ask me which module I want to choose for the entry i3_wm',
+      '$0 --without-preview',
+      'Simply let me choose and entry and a module I want to be applied to the entry and while scrolling the modules, do not apply any of them (for my preview) until I choose the one to be applied.',
     ],
     [
-      '$0 --module material.config',
-      "Ask me for which entry I want to apply module material.config (Of course, I will apply the module only if it exists for the entry you're about to choose.)",
+      '$0 --entry i3-wm',
+      'Ask me which module I want to apply to the entry i3-wm',
+    ],
+    [
+      '$0 --entry i3-wm --module Standard',
+      'Change entry i3-wm module to Standard',
+    ],
+    [
+      '$0 --entry i3-wm --module Standard --module-first',
+      'Change entry i3-wm module to Standard and put the module at the top of the file',
     ],
   ]).argv
 
@@ -305,12 +315,19 @@ const masterValidator = async opts => {
           fs.mkdirSync(configFileDef_dir, {recursive: true})
         }
         // Write some props
+        /*
+		 * Cool but it'll be better if I just copied ./config
+		 *
         const defaultConfigOpts = YAML.stringify({
           'without-preview': false,
           'module-first': false,
         })
         fs.writeFileSync(configFileDef, defaultConfigOpts)
+        */
 
+        const configFromWomb = path.join(__filename, '../config.yaml')
+        const configFileWombContent = fs.readFileSync(configFromWomb)
+        fs.writeFileSync(configFileDef, configFileWombContent)
         if (opts['config'].set(configFileDef)) {
           console.log(`Successfully created "${configFileDef}".`)
         } else {
@@ -446,7 +463,6 @@ const masterValidator = async opts => {
   Object.keys(argv).forEach(key => {
     const literal = aliasOrLiteralToLiteral(opts, key)
     if (literal) {
-      popupLog([opts[literal]])
       console.log(opts[literal].set(argv[key]))
       let action = opts[literal].set(argv[key]) //opts[opt[0]].set(argv[key])
       if (!action) {
@@ -630,7 +646,10 @@ const module = async (opts, cache) => {
       ...Object.keys(tree[opts['entry'].value].modules),
     ]
     const prevChoice = cache[opts.entry.value]
-    const prevChoiceIndex = modulesList.indexOf(prevChoice) || 1
+    console.log(prevChoice)
+    const prevChoiceIndex =
+      modulesList.indexOf(prevChoice) > 0 ? modulesList.indexOf(prevChoice) : 1
+
     const response = await prompts(
       {
         type: 'select',
@@ -669,7 +688,7 @@ const module = async (opts, cache) => {
 const figureEntryAndModule = async () => {
   const configContent =
     YAML.parse(fs.readFileSync(OPTIONS['config'].value, 'utf8')) || {}
-  const cache = configContent.cache
+  const cache = configContent.cache ?? {}
   entry(OPTIONS)
     .then(entry => {
       if (entry === 'exit') {

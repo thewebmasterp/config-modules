@@ -1,0 +1,25 @@
+[global]
+  icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/:/usr/share/icons/HighContrast/16x16/status/:/home/master/.local/share/icons/Gotham/300x300/:/usr/share/icons/hicolor/22x22/apps/
+  highlight = "#edb54b"
+
+[urgency_low]
+  background = "#09374870"
+  foreground = "#d3ebe9"
+  frame_color = "#26a98b"
+
+[urgency_normal]
+  background = "#26a98b70"
+  foreground = "#d3ebe9"
+  frame_color = "#edb54b"
+
+
+[urgency_critical]
+  background = "#c3302770"
+  foreground = "#d3ebe9"
+  frame_color = "#c33027"
+
+[normal]
+  msg_urgency = "normal"
+  background = "#26a98b70"
+  foreground = "#d3ebe9"
+  frame_color = "#edb54b"
