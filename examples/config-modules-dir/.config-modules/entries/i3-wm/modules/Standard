@@ -1,7 +1,0 @@
-set $color-focused-dark  #285577
-set $color-focused-light #2E9EF4
-set $color-black         #0C0C0C
-set $color-black-light   #292D2E
-set $color-black-lighter #5F676A
-set $color-white         #FFFFFF
-set $color-urgent        #900000
