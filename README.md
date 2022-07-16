@@ -50,7 +50,7 @@ Entryconfig on the other hand is a per-entry config file. You use it to
 configure default entry behavior, the most important of which is where
 the concatenated static + chosen module should be exported to (export-to
 property). An example entryconfig file is
-[./examples/config-modules-dir/entries/i3-wm/entryconfig](./examples/config-modules-dir/entries/i3-wm/entryconfig),
+[./examples/config-modules-dir/entries/i3-wm/entryconfig.yaml](./examples/config-modules-dir/entries/i3-wm/entryconfig.yaml),
 self-explanatory as well.
 
 ## Installation

@@ -18,7 +18,7 @@ An entry is a single program that has its own static file, entryconfig and modul
 *** config vs entryconfig
 The config usually resides in ~~/.config/config-modules/config-modules.yaml~ and it is used to both set up how config-modules behaves as well as to store cache by the utility. It is self-explanatory, for info about each option look at [[./config.yaml][./config.yaml]].
 
-Entryconfig on the other hand is a per-entry config file. You use it to configure default entry behavior, the most important of which is where the concatenated static + chosen module should be exported to (export-to property). An example entryconfig file is [[./examples/config-modules-dir/entries/i3-wm/entryconfig][./examples/config-modules-dir/entries/i3-wm/entryconfig]], self-explanatory as well.
+Entryconfig on the other hand is a per-entry config file. You use it to configure default entry behavior, the most important of which is where the concatenated static + chosen module should be exported to (export-to property). An example entryconfig file is [[./examples/config-modules-dir/entries/i3-wm/entryconfig.yaml][./examples/config-modules-dir/entries/i3-wm/entryconfig.yaml]], self-explanatory as well.
 
 
 ** Installation
