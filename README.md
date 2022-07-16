@@ -28,7 +28,7 @@ will export the resulting concatenated file to a specified place
 that you specified via config-modules-dir slash entries.
 
 A visual example of what I just explained can be seen in
-`./examples/config-modules-dir`.
+[./examples/config-modules-dir](./examples/config-modules-dir).
 
 ### entry vs module
 
@@ -85,7 +85,7 @@ parameters are explained with comments in the files. Repeating
 parameters in entryconfig (if supported) have precedence over the ones
 defined in the default config.
 
-For more info see `--help`.
+For more info, see `--help`.
 
 ## Contributing
 
