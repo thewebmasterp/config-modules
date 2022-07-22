@@ -15,6 +15,7 @@ turn whole parts of your config into individual modules that you can
 apply by choice. This is where config-modules comes into play!😃
 
 Here's what I used it for: ![](./demonstration.gif)
+![](./demonstration2.gif)
 
 ## How it works
 
